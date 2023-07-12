@@ -1,4 +1,4 @@
-class Public::SongController < ApplicationController
+class Public::SongsController < ApplicationController
   def new
   end
 

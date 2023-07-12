@@ -1,11 +1,16 @@
   <h1>歌うたいの修練場</h1>
+  <h3>
+    ここは歌うたい達に秘かに伝わる修練場</br>
+    先人の残した知恵に学び</br>
+    己が歌を更に高めるため</br>
+    今日も誰かがどこかで歌を歌う</br>
+    あなたは…
+  </h3>
 
   <div class="row">
-    <%= link_to "ゲストログイン（閲覧用）", guest_sign_in_path, class: "btn btn-secondary sign_in", method: :post %>
+    <%= link_to "見学する", guest_sign_in_path, class: "btn btn-secondary sign_in col-2", method: :post %>
+    <%= link_to "修練する",new_user_session_path, class: "btn btn-info sign_in col-2" %>
   </div>
   <div class="row">
-    <%= link_to "Log in",new_user_session_path, class: "btn btn-info sign_in" %>
-  </div>
-  <div class="row">
-    <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success sign_up" %>
+    <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success sign_up col-2" %>
   </div>

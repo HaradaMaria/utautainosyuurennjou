@@ -1,7 +1,16 @@
+<!--曲一覧-->
+  <div>
+    <%= link_to "曲一覧", songs_path, method: :get%>
+  </div>
 
 <!--マイページ-->
-<% unless user.guest_user? %>
-<div class="row">
-  <%= link_to "",edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
-</div>
-<% end %>
+  <!--% unless user.guest_user? %>-->
+  <!--  <div class="row">-->
+  <!--%= link_to "マイぺージ",user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>-->
+  <!--  </div>-->
+  <!--% end %>-->
+
+<!--ログアウト-->
+  <div>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete%>
+  </div>
