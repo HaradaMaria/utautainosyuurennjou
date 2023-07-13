@@ -1,0 +1,31 @@
+<% if @songs.exists?%>
+  <table class="col-12">
+    <% @ward %>の検索結果 <%= songs.count %>件
+    <thead>
+      <th class="col-3">曲名</th>
+      <th class="col-2">アーティスト名</th>
+      <th class="col-1">作詞</th>
+      <th class="col-1">作曲</th>
+      <th class="col-3">タイアップ情報</th>
+      <th class="col-1"></th>
+    </thead>
+    <tbody>
+      <% songs.each do |song| %>
+        <tr>
+          <td>
+            <%= link_to song_path(song) do%>
+              <%= song.name %>
+            <% end %>
+          </td>
+          <td><%= song.artist %></td>
+          <td><%= song.songwriter %></td>
+          <td><%= song.composer %></td>
+          <td><%= song.tie_up %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+<div class="">検索結果がありません</div>
+<% end %>

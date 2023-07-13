@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :records, only: [:new,:create,:show]
 
+    get "search" => "songs#search"
     resources :songs, only: [:new,:create,:index,:show] do
       resources :bookmarks, only: [:create,:destroy]
     end

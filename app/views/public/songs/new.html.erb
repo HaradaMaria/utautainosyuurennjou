@@ -1,9 +1,36 @@
-<!--サイドバー-->
-  <div class="row col-md-2 col-sm-2 col-xs-2">
-    <%= render 'layouts/sidebar', user: @user%>
-  </div>
-<!--メイン部分-->
-  <div class="row col-md-10 col-sm-10 col-xs-10">
-    <h1>新曲登録</h1>
-    <p>Find me in app/views/public/song/new.html.erb</p>
+  <div class="row">
+    <!--サイドバー-->
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <%= render 'layouts/sidebar', user: @user%>
+    </div>
+    
+    <!--メイン部分-->
+    <div class="col-md-9 col-sm-9 col-xs-9">
+      <h1>新曲登録</h1>
+      <%= form_with model: @song do |f| %>
+      <div class="">曲名</div>
+      <div>
+      <%= f.text_field :name, class:"bg-secondary text-light" %>
+      </div>
+      <div>アーティスト名</div>
+      <div>
+      <%= f.text_field :artist, class:"bg-secondary text-light" %>
+      </div>
+      <div>作詞者名</div>
+      <div>
+      <%= f.text_field :songwriter, class:"bg-secondary text-light" %>
+      </div>
+      <div>作曲者名</div>
+      <div>
+      <%= f.text_field :composer, class:"bg-secondary text-light" %>
+      </div>
+      <div>タイアップ情報</div>
+      <div>
+      <%= f.text_field :tie_up, class:"bg-secondary" %>
+      </div>
+      <div>
+      <%= f.submit '新曲登録', class:"btn btn-success"%>
+      <% end %>
+      </div>
+    </div>
   </div>

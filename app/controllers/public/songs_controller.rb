@@ -4,7 +4,13 @@ class Public::SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_param)
+    @song = Song.new(song_params)
+    if @song.save
+      flash[:notice] = "曲を登録しました"
+      redirect_to song_path(@song)
+    else
+      render :new
+    end
   end
 
   def index
@@ -13,6 +19,12 @@ class Public::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+  end
+  
+  def search
+    @colmn = params[:colmn]
+    @ward = params[:ward]
+    @songs = Song.looks(params[:search],params[:ward])
   end
   
   private
