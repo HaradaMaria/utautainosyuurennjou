@@ -1,7 +1,22 @@
+<div class="col-12">
+<!--サイト名-->
+  <div>
+    <h5>歌うたいの修練場</h5>
+  </div>
+<!--曲一覧-->
+  <div class="row">
+    <%= link_to "曲一覧", songs_path, method: :get%>
+  </div>
 
 <!--マイページ-->
-<% unless user.guest_user? %>
-<div class="row">
-  <%= link_to "",edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+  <!--% unless user.guest_user? %>-->
+  <!--  <div class="row">-->
+  <!--%= link_to "マイぺージ",user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>-->
+  <!--  </div>-->
+  <!--% end %>-->
+
+<!--ログアウト-->
+  <div class="row">
+    <%= link_to "Log out", destroy_user_session_path, method: :delete%>
+  </div>
 </div>
-<% end %>
