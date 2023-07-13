@@ -1,5 +1,10 @@
-<!--曲一覧-->
+<div class="col-12">
+<!--サイト名-->
   <div>
+    <h5>歌うたいの修練場</h5>
+  </div>
+<!--曲一覧-->
+  <div class="row">
     <%= link_to "曲一覧", songs_path, method: :get%>
   </div>
 
@@ -11,6 +16,7 @@
   <!--% end %>-->
 
 <!--ログアウト-->
-  <div>
+  <div class="row">
     <%= link_to "Log out", destroy_user_session_path, method: :delete%>
   </div>
+</div>
