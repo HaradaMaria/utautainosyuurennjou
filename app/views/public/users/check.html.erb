@@ -1,9 +1,10 @@
-<!--サイドバー-->
-  <div class="row col-md-2 col-sm-2 col-xs-2">
-    <%= render 'layouts/sidebar', user: @user%>
-  </div>
 <!--メイン部分-->
-  <div class="row col-md-10 col-sm-10 col-xs-10">
-    <h1>Public::User#check</h1>
-    <p>Find me in app/views/public/user/check.html.erb</p>
+  <h1>
+    この修練場は、一度諦めた者に二度目の機会を与えることはない。
+    それでも、あなたは修練を取り止めますか？
+  </h1>
+  <div>
+    <%= link_to users_withdraw_path, method: :patch, class: "btn btn-danger" do %>
+      <div>取り止める</div>
+    <% end %>
   </div>

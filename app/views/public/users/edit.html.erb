@@ -1,9 +1,22 @@
-<!--サイドバー-->
-  <div class="row col-md-2 col-sm-2 col-xs-2">
-    <%= render 'layouts/sidebar', user: @user%>
-  </div>
 <!--メイン部分-->
-  <div class="row col-md-10 col-sm-10 col-xs-10">
-    <h1>会員情報編集画面</h1>
-    <p>Find me in app/views/public/user/edit.html.erb</p>
+<h1>会員情報編集</h1>
+<%= form_with model: @user, url: user_path do |f| %>
+  <div class="field">
+    <%= f.label :name, "ニックネーム"%><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+  <div class="field">
+    <%= f.label :email,"メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  
+  <div class="action">
+    <%= f.submit "情報を更新する", class: "btn btn-success" %>
+  </div>
+<% end %>
+  
+  <div>
+    <%= link_to users_check_path(@user), class: "btn btn-danger" do%>
+      <div>修練を取り止める</div>
+    <% end %>
   </div>

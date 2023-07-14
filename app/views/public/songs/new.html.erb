@@ -1,36 +1,27 @@
-  <div class="row">
-    <!--サイドバー-->
-    <div class="col-md-3 col-sm-3 col-xs-3">
-      <%= render 'layouts/sidebar', user: @user%>
+<!--メイン部分-->
+  <h1>新曲登録</h1>
+  <%= form_with model: @song, url: song_path do |f| %>
+    <div class="field">
+      <%= f.label :name, "曲名"%><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div>
-    
-    <!--メイン部分-->
-    <div class="col-md-9 col-sm-9 col-xs-9">
-      <h1>新曲登録</h1>
-      <%= form_with model: @song do |f| %>
-      <div class="">曲名</div>
-      <div>
-      <%= f.text_field :name, class:"bg-secondary text-light" %>
-      </div>
-      <div>アーティスト名</div>
-      <div>
-      <%= f.text_field :artist, class:"bg-secondary text-light" %>
-      </div>
-      <div>作詞者名</div>
-      <div>
-      <%= f.text_field :songwriter, class:"bg-secondary text-light" %>
-      </div>
-      <div>作曲者名</div>
-      <div>
-      <%= f.text_field :composer, class:"bg-secondary text-light" %>
-      </div>
-      <div>タイアップ情報</div>
-      <div>
-      <%= f.text_field :tie_up, class:"bg-secondary" %>
-      </div>
-      <div>
+    <div class="field">
+      <%= f.label :artist, "アーティスト名"%><br />
+      <%= f.text_field :artist, autofocus: true, autocomplete: "artist" %>
+    </div>
+    <div class="field">
+      <%= f.label :songwriter, "作詞者名"%><br />
+      <%= f.text_field :songwriter, autofocus: true, autocomplete: "songwriter" %>
+    </div>
+    <div class="field">
+      <%= f.label :composer, "作曲者名"%><br />
+      <%= f.text_field :composer, autofocus: true, autocomplete: "composer" %>
+    </div>
+    <div class="field">
+      <%= f.label :tie_up, "タイアップ情報"%><br />
+      <%= f.text_field :tie_up, autofocus: true, autocomplete: "tie_up" %>
+    </div>
+    <div class="action">
       <%= f.submit '新曲登録', class:"btn btn-success"%>
-      <% end %>
-      </div>
     </div>
-  </div>
+  <% end %>

@@ -8,16 +8,13 @@
         <th class="col-2">作詞者</th>
         <th class="col-2">作曲者</th>
         <th class="col-3">タイアップ情報</th>
-        <% unless current_user.guest_user? %>
-          <th class="col-1"></th>
-        <% end %>
       </tr>
     </thead>
     <tbody>
       <% songs.each do |song| %>
         <tr>
           <td>
-            <%= link_to song_path(song) do%>
+            <%= link_to admin_song_path(song) do%>
               <%= song.name %>
             <% end %>
           </td>
@@ -25,9 +22,6 @@
           <td><%= song.songwriter %></td>
           <td><%= song.composer %></td>
           <td><%= song.tie_up %></td>
-          <% unless current_user.guest_user? %>
-            <td class="col-1"></td>
-          <% end %>
         </tr>
       <% end %>
     </tbody>

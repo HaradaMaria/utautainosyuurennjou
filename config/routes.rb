@@ -15,10 +15,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
-    resources :records, only: [:new,:create,:show]
-
     get "search" => "songs#search"
     resources :songs, only: [:new,:create,:index,:show] do
+      resources :records, only: [:new,:create,:show]
       resources :bookmarks, only: [:create,:destroy]
     end
 

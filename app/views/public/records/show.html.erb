@@ -1,9 +1,19 @@
-<!--サイドバー-->
-  <div class="row col-md-2 col-sm-2 col-xs-2">
-    <%= render 'layouts/sidebar', user: @user%>
-  </div>
 <!--メイン部分-->
-  <div class="row col-md-10 col-sm-10 col-xs-10">
-    <h1>記録詳細</h1>
-    <p>Find me in app/views/public/records/show.html.erb</p>
+  <!--曲情報-->
+  <div class="row col-md-12 col-sm-12 col-xs-12">
+    <%= render 'public/songs/song_data', song: @song %>
   </div>
+
+  <h1>記録詳細</h1>
+    <table>
+      <div>点数</div>
+      <div><%= @record.score %></div>
+       <div>キー</div>
+      <div><%= @record.key %></div>
+      <div>共有する事</div>
+      <div><%= @record.share %></div>
+      <% if @record.user_id == current_user.id%>
+      <div>共有しないメモ</div>
+      <div><%= @record.memo %></div>
+      <% end %>
+</table>
