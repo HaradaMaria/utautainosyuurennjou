@@ -4,9 +4,24 @@
     <%= render 'song_data', song: @song %>
   </div>
 
+  <% unless current_user.guest_user? %>
+    <div>
+      <%= link_to new_song_record_path(@song), class: "btn btn-primary" do %>
+        <div>記録する</div>
+      <% end %>
+    </div>
+    
+    <div>ブクマ</div>
+  <% end %>
+  
+  <!--全員の記録-->
   <div>
-    <%= link_to new_song_record_path(@song), class: "btn btn-primary" do %>
-      <div>記録する</div>
-    <% end %>
+    <%= render 'layouts/all_records', records: @all_records%>
   </div>
-  <!--記録-->
+  
+  <!--ログインしている会員分の記録-->
+  <% unless current_user.guest_user? %>
+    <div>
+      <%= render 'layouts/user_records', records: @user_records%>
+    </div>
+  <% end %>

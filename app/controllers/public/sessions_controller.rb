@@ -17,6 +17,13 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  # ゲストログイン
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to songs_path(user), notice: "guestuserでログインしました。"
+  end
 
   protected
 
@@ -37,11 +44,7 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
   
-  # ゲストログイン
-  def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to songs_path(user), notice: "guestuserでログインしました。"
-  end
+
+
   
 end

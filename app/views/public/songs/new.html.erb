@@ -1,6 +1,6 @@
 <!--メイン部分-->
   <h1>新曲登録</h1>
-  <%= form_with model: @song, url: song_path do |f| %>
+  <%= form_with model: @song, url: songs_path do |f| %>
     <div class="field">
       <%= f.label :name, "曲名"%><br />
       <%= f.text_field :name, autofocus: true, autocomplete: "name" %>

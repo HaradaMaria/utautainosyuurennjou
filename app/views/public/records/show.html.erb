@@ -7,8 +7,8 @@
   <h1>記録詳細</h1>
     <table>
       <div>点数</div>
-      <div><%= @record.score %></div>
-       <div>キー</div>
+      <div><%= number_with_precision(@record.score, precision: 2) %></div>
+      <div>キー</div>
       <div><%= @record.key %></div>
       <div>共有する事</div>
       <div><%= @record.share %></div>

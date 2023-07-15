@@ -26,7 +26,7 @@
           <td><%= song.composer %></td>
           <td><%= song.tie_up %></td>
           <% unless current_user.guest_user? %>
-            <td class="col-1"></td>
+            <td class="col-1">ブクマ</td>
           <% end %>
         </tr>
       <% end %>
