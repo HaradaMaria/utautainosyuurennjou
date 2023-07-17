@@ -1,6 +1,14 @@
 <% if @songs.exists?%>
+<div>
   <table class="table col-12 text-light">
-    <% @ward %>の検索結果 <%= songs.count %>件
+    <div>
+      <% if @ward.present?%>
+        「<%= @ward %>」の検索結果
+      <% end %>
+    </div>
+    <div>
+      全<%= songs.count %>件
+    </div>
     <thead>
       <tr>
         <th class="col-2">曲名</th>
@@ -32,6 +40,7 @@
       <% end %>
     </tbody>
   </table>
+</div>
 <% else %>
 <div class="">検索結果がありません</div>
 <% end %>
