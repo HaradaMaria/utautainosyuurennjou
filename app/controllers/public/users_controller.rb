@@ -2,7 +2,8 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:show, :edit, :update]
   def show
     @user = current_user
-    @user_records = @user.records.all
+    @user_records = @user.records.all.order(id: :DESC)
+
   end
 
   def edit

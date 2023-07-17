@@ -3,7 +3,7 @@ class Admin::RecordsController < ApplicationController
   
   def index
     @song = Song.all
-    @all_records = Record.all
+    @all_records = Record.all.order(id: :DESC)
   end
 
   def show
@@ -39,4 +39,5 @@ class Admin::RecordsController < ApplicationController
   def record_params
     params.require(:record).permit( :user_id, :song_id, :score, :key, :share, :memo, :created_at)
   end
+  
 end

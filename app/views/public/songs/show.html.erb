@@ -16,12 +16,13 @@
   
   <!--全員の記録-->
   <div>
-    <%= render 'layouts/all_records', records: @all_records%>
+    <%= render 'public/records/all_records', records: @all_records%>
   </div>
   
   <!--ログインしている会員分の記録-->
+  
   <% unless current_user.guest_user? %>
     <div>
-      <%= render 'layouts/user_records', records: @user_records%>
+      <%= render 'public/records/user_records', records: @user_records%>
     </div>
   <% end %>

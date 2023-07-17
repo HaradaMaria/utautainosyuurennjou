@@ -1,7 +1,7 @@
 class Public::RecordsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   before_action :ensure_guest_user, only: [:new,:create]
-  
+
   def new
     @song = Song.find(params[:song_id])
     @record = Record.new
@@ -24,9 +24,9 @@ class Public::RecordsController < ApplicationController
     @record = Record.find(params[:id])
     @song = Song.find(params[:song_id])
   end
-  
+
   private
-  
+
   def record_params
   params.require(:record).permit(:user_id, :song_id, :score, :key, :share, :memo)
   end

@@ -11,7 +11,7 @@
         <tr>
           <td><%= record.song.name %></td>
           <td>
-            <%= link_to song_record_path(@song,record) do%>
+            <%= link_to song_record_path(record) do%>
             <%= record.created_at %>
             <% end %>
             </td>
