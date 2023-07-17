@@ -1,9 +1,28 @@
-<!--サイドバー-->
-  <div class="row col-md-2 col-sm-2 col-xs-2">
-    <%= render 'layouts/sidebar', user: @user%>
+  <!--メイン部分-->
+  <!--曲情報-->
+  <div class="row col-md-12 col-sm-12 col-xs-12">
+    <%= render 'song_data', song: @song %>
   </div>
-<!--メイン部分-->
-  <div class="row col-md-10 col-sm-10 col-xs-10">
-    <h1>曲詳細</h1>
-    <p>Find me in app/views/public/song/show.html.erb</p>
+
+  <% unless current_user.guest_user? %>
+    <div>
+      <%= link_to new_song_record_path(@song), class: "btn btn-primary" do %>
+        <div>記録する</div>
+      <% end %>
+    </div>
+    
+    <div>ブクマ</div>
+  <% end %>
+  
+  <!--全員の記録-->
+  <div>
+    <%= render 'public/records/all_records', records: @all_records%>
   </div>
+  
+  <!--ログインしている会員分の記録-->
+  
+  <% unless current_user.guest_user? %>
+    <div>
+      <%= render 'public/records/user_records', records: @user_records%>
+    </div>
+  <% end %>

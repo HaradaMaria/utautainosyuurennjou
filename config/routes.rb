@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
-    resources :records, only: [:new,:create,:show]
-
+    get "search" => "songs#search"
     resources :songs, only: [:new,:create,:index,:show] do
+      
+      resources :records, only: [:new,:create,:show]
       resources :bookmarks, only: [:create,:destroy]
     end
 
@@ -34,10 +35,12 @@ Rails.application.routes.draw do
      sessions: 'admin/sessions'
   }
 
-    namespace :admin do
-    resources :records, only: [:index,:show,:edit,:update]
-
-    resources :songs, only: [:index,:show,:edit,:update]
+  namespace :admin do
+    
+    resources :records, only: [:index]
+    resources :songs, only: [:index,:show,:edit,:update] do
+      resources :records, only: [:show,:edit,:update,:destroy]
+    end
 
     resources :users, only: [:index,:show,:edit,:update]
   end

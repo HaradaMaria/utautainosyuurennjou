@@ -1,9 +1,28 @@
-<!--サイドバー-->
-  <div class="row col-md-2 col-sm-2 col-xs-2">
-    <%= render 'layouts/sidebar', user: @user%>
-  </div>
 <!--メイン部分-->
-  <div class="row col-md-10 col-sm-10 col-xs-10">
-    <h1>会員Myページ</h1>
-    <p>Find me in app/views/public/user/show.html.erb</p>
+  <h1>会員情報</h1>
+  <table class="table text-light text-center">
+    <thead>
+      <tr>
+        <th class="col-4">会員名</th>
+        <th class="col-4">email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @user.name %></td>
+        <td><%= @user.email %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <%= link_to edit_user_path(@user), class: "btn btn-primary" do%>
+      <div>編集する</div>
+    <% end %>
+  </div>
+
+  <!--記録テーブル-->
+  <div>
+  <%= render 'public/records/user_records', records: @user_records%>
   </div>

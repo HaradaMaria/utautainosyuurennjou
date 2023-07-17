@@ -1,2 +1,31 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+  <h1>会員情報</h1>
+  <table class="table text-light text-center">
+    <thead>
+      <tr>
+        <th class="col-1">ID</th>
+        <th class="col-4">会員名</th>
+        <th class="col-4">email</th>
+        <th class="col-2">修練状況</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td><%= @user.id%></td>
+        <td><%= @user.name %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.is_training ? '修練中' : '退会済'%></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div>
+    <%= link_to edit_admin_user_path(@user), class: "btn btn-primary" do%>
+      <div>編集する</div>
+    <% end %>
+  </div>
+  
+  <!--記録テーブル-->
+  <div>
+  <!--%= render 'layouts/records_table', records: @recordes%>-->
+  </div>

@@ -1,2 +1,32 @@
-<h1>Admin::Records#edit</h1>
-<p>Find me in app/views/admin/records/edit.html.erb</p>
+<!--メイン部分-->
+  <!--曲情報-->
+  <div class="row col-md-12 col-sm-12 col-xs-12">
+    <%= render 'admin/songs/song_data', song: @song %>
+  </div>
+  
+  <!--記録フォーム-->
+  <h3>記録編集</h3>
+    <%= form_with model: @record, url: admin_song_record_path do |f| %>
+
+    <%= f.hidden_field :song_id => @song.id %>
+    <div class="field">
+      <%= f.label :score, "点数"%><br />
+      <%= f.number_field :score, step: "0.01", autofocus: true, autocomplete: "score" %>
+    </div>
+    <div class="field">
+      <%= f.label :key, "キー"%><br />
+      <%= f.select :key, ["-12", "-11", "-10","-9","-8","-7","-6","-5","-4","-3","-2","-1","±0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12"], { include_blank: "" }, autocomplete: "key" %>
+    </div>
+    <div class="field">
+      <%= f.label :share, "共有する事"%><br />
+      <%= f.text_field :share, autofocus: true, autocomplete: "share" %>
+    </div>
+    <div class="field">
+      <%= f.label :memo, "共有されないメモ"%><br />
+      <%= f.text_field :memo, autofocus: true, autocomplete: "memo" %>
+    </div>
+
+    <div class="action">
+      <%= f.submit '記録する', class:"btn btn-success"%>
+    </div>
+  <% end %>

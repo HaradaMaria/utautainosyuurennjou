@@ -1,2 +1,29 @@
-<h1>Admin::Records#show</h1>
-<p>Find me in app/views/admin/records/show.html.erb</p>
+<!--メイン部分-->
+  <!--曲情報-->
+  <div class="row col-md-12 col-sm-12 col-xs-12">
+    <%= render 'admin/songs/song_data', song: @song %>
+  </div>
+
+  <h1>記録詳細</h1>
+    <table>
+      <div>点数</div>
+      <div><%= number_with_precision(@record.score, precision: 2) %></div>
+      <div>キー</div>
+      <div><%= @record.key %></div>
+      <div>共有する事</div>
+      <div><%= @record.share %></div>
+      <div>共有しないメモ</div>
+      <div><%= @record.memo %></div>
+</table>
+
+  <div>
+    <%= link_to edit_admin_song_record_path(@record), class: "btn btn-primary" do%>
+      <div>編集する</div>
+    <% end %>
+  </div>
+  
+    <div>
+    <%= link_to admin_song_record_path(@record), method: :delete, class: "btn btn-danger" do%>
+      <div>削除する</div>
+    <% end %>
+  </div>
