@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :songs, only: [:new,:create,:index,:show] do
       
       resources :records, only: [:new,:create,:show]
-      resources :bookmarks, only: [:create,:destroy]
+      resource :bookmarks, only: [:create,:destroy]
     end
 
 

@@ -1,0 +1,1 @@
+$('#bookmark<%= @song.id %>').html("<%= escape_javascript(render partial: 'public/bookmarks/bookmark', locals: {song: @song}) %>");

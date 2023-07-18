@@ -1,46 +1,50 @@
 <% if @songs.exists?%>
-<div>
-  <table class="table col-12 text-light">
-    <div>
-      <% if @ward.present?%>
-        「<%= @ward %>」の検索結果
-      <% end %>
-    </div>
-    <div>
-      全<%= songs.count %>件
-    </div>
-    <thead>
-      <tr>
-        <th class="col-2">曲名</th>
-        <th class="col-2">アーティスト</th>
-        <th class="col-2">作詞者</th>
-        <th class="col-2">作曲者</th>
-        <th class="col-3">タイアップ情報</th>
-        <% unless current_user.guest_user? %>
-          <th class="col-1"></th>
+  <div>
+    <table class="table col-12 text-light">
+      <div>
+        <% if @ward.present?%>
+          「<%= @ward %>」
+          の検索結果
         <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% songs.each do |song| %>
+        <!--%= @bookmarks.songs.name %>-->
+      </div>
+      <div>
+        全<%= songs.count %>件
+      </div>
+      <thead>
         <tr>
-          <td>
-            <%= link_to song_path(song) do%>
-              <%= song.name %>
-            <% end %>
-          </td>
-          <td><%= song.artist %></td>
-          <td><%= song.songwriter %></td>
-          <td><%= song.composer %></td>
-          <td><%= song.tie_up %></td>
+          <th class="col-2">曲名</th>
+          <th class="col-2">アーティスト</th>
+          <th class="col-2">作詞者</th>
+          <th class="col-2">作曲者</th>
+          <th class="col-3">タイアップ情報</th>
           <% unless current_user.guest_user? %>
-            <td class="col-1">ブクマ</td>
+            <th class="col-1"></th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% songs.each do |song| %>
+          <tr>
+            <td>
+              <%= link_to song_path(song) do%>
+                <%= song.name %>
+              <% end %>
+            </td>
+            <td><%= song.artist %></td>
+            <td><%= song.songwriter %></td>
+            <td><%= song.composer %></td>
+            <td><%= song.tie_up %></td>
+            <% unless current_user.guest_user? %>
+            <td id="bookmark<%= song.id %>">
+              <%= render 'public/bookmarks/bookmark', song: song %>
+            </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
-<div class="">検索結果がありません</div>
+  <div class="">検索結果がありません</div>
 <% end %>
