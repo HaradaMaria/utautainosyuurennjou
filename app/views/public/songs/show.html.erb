@@ -11,7 +11,9 @@
       <% end %>
     </div>
     
-    <div>ブクマ</div>
+    <div id="bookmark<%= @song.id %>">
+      <%= render 'public/bookmarks/bookmark', song: @song %>
+    </div>
   <% end %>
   
   <!--全員の記録-->

@@ -30,8 +30,10 @@ class Public::SongsController < ApplicationController
   def search
     @colmn = params[:colmn]
     @ward = params[:ward]
-    @songs = Song.looks(params[:colmn],params[:ward])
+    @bookmark = params[:bookmark]
+    @songs = Song.looks(params[:colmn],params[:ward],current_user,params[:bookmark])
   end
+  
   
   private
 

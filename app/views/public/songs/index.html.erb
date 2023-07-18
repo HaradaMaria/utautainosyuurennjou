@@ -12,7 +12,7 @@
   <%= form_with url: search_path(@songs), method: :get, local: false do|f| %>
       <%= f.text_field :ward %>
       <%= f.select :colmn, options_for_select([['曲名'], ['アーティスト名'], ['作詞者名'], ['作曲者名']]) %>
-      <!--%= f.check_box :bookmark, { multiple: false }, ture, false %>-->
+      <%= f.check_box :bookmark, { multiple: false }, true, false %>
       <%= f.label :bookmark, "ブックマーク済"%>
       <div>
         <%= f.submit "曲を検索", class: "btn btn-success"%>
@@ -21,7 +21,6 @@
   
   <!--曲一覧-->
   <div id="search"></div>
-
   
   <!--ページネーション-->
   
