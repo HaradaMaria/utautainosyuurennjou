@@ -12,6 +12,7 @@ class Song < ApplicationRecord
     bookmarks.exists?(user_id: user.id)
   end
 
+ # ブックマーク絞り込み用
   scope :bookmarked_by, -> (user_id){joins(:bookmarks).where(bookmarks: {user_id: user_id})}
 
   # 検索機能
