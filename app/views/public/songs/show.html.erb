@@ -1,30 +1,34 @@
   <!--メイン部分-->
   <!--曲情報-->
-  <div class="row col-md-12 col-sm-12 col-xs-12">
-    <%= render 'song_data', song: @song %>
-  </div>
-
-  <% unless current_user.guest_user? %>
-    <div>
-      <%= link_to new_song_record_path(@song), class: "btn btn-primary" do %>
-        <div>記録する</div>
-      <% end %>
+  <div>
+    <div class="row col-12 align-items-end">
+      <%= render 'song_data', song: @song %>
     </div>
     
-    <div id="bookmark<%= @song.id %>">
-      <%= render 'public/bookmarks/bookmark', song: @song %>
+    <div class="col col-2">
+      <% unless current_user.guest_user? %>
+        <div id="bookmark<%= @song.id %>", class="text-center">
+          <%= render 'public/bookmarks/bookmark', song: @song %>
+        </div>
+        
+        <div>
+          <%= link_to new_song_record_path(@song), class: "btn btn-primary justify-content-center" do %>
+            <div>記録</div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
   
   <!--全員の記録-->
-  <div>
+  <div class="row col-12">
     <%= render 'public/records/all_records', records: @all_records%>
   </div>
   
   <!--ログインしている会員分の記録-->
   
   <% unless current_user.guest_user? %>
-    <div>
+    <div class="row col-12">
       <%= render 'public/records/user_records', records: @user_records%>
     </div>
   <% end %>

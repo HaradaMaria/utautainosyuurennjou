@@ -1,50 +1,50 @@
 <div class="col-12">
 <!--サイト名-->
-  <div>
-    <h5>歌うたいの修練場</h5>
+  <div class="fs-3">
+    歌うたいの修練場
   </div>
-  
+
 <!--会員-->
   <% if user_signed_in? %>
     <!--曲一覧-->
     <div class="row">
-      <%= link_to "曲一覧", songs_path, method: :get%>
+      <%= link_to "曲一覧", songs_path, method: :get %>
     </div>
-    
+
     <!--マイページ-->
     <% unless current_user.guest_user? %>
       <div class="row">
-        <%= link_to "マイぺージ",user_path(current_user), class: "" %>
+        <%= link_to "マイぺージ",user_path(current_user) %>
       </div>
     <% end %>
-    
+
     <!--ログアウト-->
     <div class="row">
-      <%= link_to "Log out", destroy_user_session_path, method: :delete%>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
     </div>
-    
+
   <!--管理者-->
   <% elsif admin_signed_in? %>
-    
+
     <!--記録一覧-->
     <div class="row">
-      <%= link_to "記録一覧", admin_records_path, method: :get%>
+      <%= link_to "記録一覧", admin_records_path, method: :get , class:"side_item"%>
     </div>
-    
-    
+
+
     <!--曲一覧-->
     <div class="row">
-      <%= link_to "曲一覧", admin_songs_path, method: :get%>
+      <%= link_to "曲一覧", admin_songs_path, method: :get , class:"side_item"%>
     </div>
-    
+
     <!--会員一覧-->
     <div class="row">
-      <%= link_to "会員一覧",admin_users_path(current_user), class: "" %>
+      <%= link_to "会員一覧",admin_users_path(current_user), class:"side_item" %>
     </div>
-    
+
     <!--ログアウト-->
     <div class="row">
-      <%= link_to "Log out", destroy_admin_session_path, method: :delete%>
+      <%= link_to "Log out", destroy_admin_session_path, method: :delete , class:"side_item" %>
     </div>
   <% end %>
 </div>

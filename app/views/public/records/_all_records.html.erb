@@ -1,11 +1,13 @@
-  <table class="table text-light text-center">
+  <div class="fs-3">みんなの記録</div>
+  <table class="col-12 text-center">
     <thead>
-      <th>会員名</th>
-      <th>曲名</th>
-      <th>記録日時</th>
-      <th>点数</th>
-      <th>キー</th>
-      <th></th>
+      <tr>
+        <th class="col-3">会員名</th>
+        <th class="col-3">曲名</th>
+        <th class="col-3">記録日時</th>
+        <th class="col-2">点数</th>
+        <th class="col-1">キー</th>
+      </tr>
     </thead>
     <tbody>
       <% records.each do |record| %>

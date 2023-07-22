@@ -1,50 +1,48 @@
-<div>
-      <canvas id="myLineChart", class="width: 100%"></canvas>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script>
-        $(document).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
-          let ctx = document.getElementById("myLineChart");    //A.グラフを表示するという関数を定義(id)
-          //ctxとは "canvas context" の略で、canvas要素の描画コンテキストを指している
-          let myLineChart = new Chart(ctx, {     //B.グラフの内容を決める関数を定義している
-            type: 'line',
-            data: {
-              datasets: [
-                <% @user_records.each do |graph|%>
-                {
+  <div class="row col-md-12 col-sm-12 col-xs-12">
+    <canvas id="myLineChart", class="col-12"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      $(document).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
+        let ctx = document.getElementById("myLineChart");    //A.グラフを表示するという関数を定義(id)
+        //ctxとは "canvas context" の略で、canvas要素の描画コンテキストを指している
+        let myLineChart = new Chart(ctx, {     //B.グラフの内容を決める関数を定義している
+          type: 'line',
+          data: {
+            labels: [
+              1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+            ],
+            datasets: [
+              <% @user_graph.each do |graph|%>
+              {
                 label: '点数',    //系列名
                 data: [    //x軸データ
                   <%= graph.score %>,
+                  // 10,20,30,40,30,60,70,80,90,10,
                 ],
-                borderColor: "#000080",    //線の色
-                tension: 0.2    //線の曲線度合い
-              }]
+                borderColor: "#5cb6e4",    //線の色
+                tension: 0.2,    //線の曲線度合い
+              },
+              <% end %>
+            ]
+          },
+          options: {
+            title: {    //グラフタイトル
+              display: true,    //表示するか否か
+              text: '直近　回の点数'    //文面
             },
-            options: {
-              title: {    //グラフタイトル
-                display: true,    //表示するか否か
-                text: '直近7日間の投稿数推移'    //文面
+            responsive: true,    //画面サイズ変更に伴ってグラフのサイズ変更するか否か
+            backgroundColor: "#050B0D",    //背景色
+            scales: {    //軸に対する設定
+              y:{    //y軸に対する設定
+                min: 0,    //y軸の最小値
+                max: 100.00,    //y軸の最大値
               },
-              responsive: true,    //画面サイズ変更に伴ってグラフのサイズ変更するか否か
-              backgroundColor: "#f000000",    //背景色
-              scales: {    //軸に対する設定
-                y:{    //y軸に対する設定
-                  min: 0,    //y軸の最小値
-                  max: 100.00    //y軸の最大値
-                },
-                x: {    //x軸に対する設定
-                type: 'time',
-                time: {
-                unit: 'day',
-                min: new (2021, 5, 23, 0, 0, 0),
-                max: new Date(2021, 5, 24, 0, 0, 0),
-                displayFormats: {
-                  day: 'MM/dd',
-                },
-                tooltipFormat: 'MM/dd',
+              x:{    //x軸に対する設定
+                display: false,
               },
-              }
-            }
-          });
+            },
+          }
         });
-      </script>
-    </div>
+      });
+    </script>
+  </div>

@@ -25,6 +25,7 @@ class Public::SongsController < ApplicationController
     @user = current_user
     @all_records = @song.records.all.order(id: :DESC)
     @user_records = @song.records.where(user_id:@user).order(id: :DESC)
+    @user_graph = @song.records.where(user_id:@user).order(id: :DESC).limit(25)
   end
   
   def search

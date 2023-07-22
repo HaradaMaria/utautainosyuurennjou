@@ -1,10 +1,15 @@
+  <div class="fs-3">あなたの記録</div>
+<!--グラフ-->
+  <div class="row col-12 graph-area">
+    <%= render 'layouts/line_graph' %>
+  </div>
+
   <table class="table text-light text-center">
     <thead>
-      <th>曲名</th>
-      <th>記録日時</th>
-      <th>点数</th>
-      <th>キー</th>
-      <th></th>
+      <th class="col-4">曲名</th>
+      <th class="col-4">記録日時</th>
+      <th class="col-3">点数</th>
+      <th class="col-1">キー</th>
     </thead>
     <tbody>
       <% records.each do |record| %>

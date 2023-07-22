@@ -1,6 +1,6 @@
 <% if @songs.exists?%>
   <div>
-    <table class="table col-12 text-light">
+    <table class="col-12">
       <div>
         <% if @ward.present?%>
           「<%= @ward %>」
@@ -36,7 +36,7 @@
             <td><%= song.composer %></td>
             <td><%= song.tie_up %></td>
             <% unless current_user.guest_user? %>
-            <td id="bookmark<%= song.id %>">
+            <td id="bookmark<%= song.id %>"$, class="fs-3">
               <%= render 'public/bookmarks/bookmark', song: song %>
             </td>
             <% end %>
