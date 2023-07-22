@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:show, :edit, :update]
   def show
     @user = current_user
-    @user_records = @user.records.all.order(id: :DESC)
+    @user_records = @user.records.page(params[:user_records]).order(id: :DESC)
     @user_graph =  @user_records.where(user_id:@user).order(id: :DESC).limit(25)
   end
 

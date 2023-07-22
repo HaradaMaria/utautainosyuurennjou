@@ -1,28 +1,29 @@
-  <div class="fs-3">みんなの記録</div>
-  <table class="col-12 text-center">
-    <thead>
-      <tr>
-        <th class="col-3">会員名</th>
-        <th class="col-3">曲名</th>
-        <th class="col-3">記録日時</th>
-        <th class="col-2">点数</th>
-        <th class="col-1">キー</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% records.each do |record| %>
+  <div id="pagenate" class="col-12">
+    <table class="col-12 text-center">
+      <thead>
         <tr>
-          <td><%= record.user.name %></td>
-          <td><%= record.song.name %></td>
-          <td>
-            <%= link_to song_record_path(@song,record) do%>
-            <%= record.created_at %>
-            <% end %>
-          </td>
-          <td><%= number_with_precision(record.score, precision: 2) %></td>
-          <td><%= record.key %></td>
+          <th class="col-3">会員名</th>
+          <th class="col-3">曲名</th>
+          <th class="col-2">点数</th>
+          <th class="col-2">キー</th>
+          <th class="col-2">記録日時</th>
         </tr>
-      <% end %>
-    </tbody>
-    
-  </table>
+      </thead>
+      <tbody>
+        <% records.each do |record| %>
+          <tr>
+            <td><%= record.user.name %></td>
+            <td><%= record.song.name %></td>
+            <td><%= number_with_precision(record.score, precision: 2) %></td>
+            <td><%= record.key %></td>
+            <td>
+              <%= link_to song_record_path(@song,record) do%>
+              <%= record.created_at.strftime("%y/%m/%d %H:%M") %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate records, :param_name => 'all_records', remote: true %>
+  </div>

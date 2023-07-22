@@ -11,6 +11,7 @@ $font-color: #58C2E6;
 
 $font-size-base: 18px;
 
+
 .fs-1{
     font-size: $font-size-base*2.75;
 }
@@ -75,7 +76,7 @@ body{
         color: $font-color;
         background-color: $dark-color;
     }
-    
+
     select {
         color: $font-color;
         background-color: $dark-color;
@@ -90,42 +91,35 @@ body{
     background-image: url("top.jpg");
     background-size: 100% 100%;
     background-position: bottom center;
-    
+
     h1{
         height: 10%;
     }
-    
+
     .text-area{
         height: 30%;
     }
-    
+
     .btn-area{
         height: 60%;
     }
-    
-    
+
+
 }
 
 
 // サイドバー
 .sidebar {
-    
+
     background-color: $accents-color;
     width: 100%;
-    .row {
-        position: relative;
+
+    .border-top {
+        
+        border-color: $dark-color !important;
+        border-width: 3px !important;
     }
-    a {
-        padding: 10px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border-top: $dark-color solid;
-        color: $font-color;
-        position: absolute;
-    }
-    
+
 }
 
 .sidebar_fixed {
@@ -142,11 +136,15 @@ table{
         border-top: $font-color solid;
         color: $font-color;
     }
-    
+
 }
 
+// ページネーション
+.pagination {
+  justify-content: center;
+}
 
 // グラフ
 .graph-area{
-    height: 50%;
+    width: 100%;
 }
