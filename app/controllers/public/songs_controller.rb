@@ -17,24 +17,25 @@ class Public::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all 
   end
 
   def show
     @song = Song.find(params[:id])
     @user = current_user
-    @all_records = @song.records.all.order(id: :DESC)
-    @user_records = @song.records.where(user_id:@user).order(id: :DESC)
+    @all_records = @song.records.page(params[:all_records]).order(id: :DESC)
+    @user_records = @song.records.where(user_id:@user).page(params[:user_records]).order(id: :DESC)
+    @user_graph = @song.records.where(user_id:@user).order(id: :DESC).limit(25)
   end
-  
+
   def search
     @colmn = params[:colmn]
     @ward = params[:ward]
     @bookmark = params[:bookmark]
-    @songs = Song.looks(params[:colmn],params[:ward],current_user,params[:bookmark])
+    @song_looks = Song.looks(params[:colmn],params[:ward],current_user,params[:bookmark])
+    @songs = @song_looks.page(params[:page])
   end
-  
-  
+
+
   private
 
   def song_params

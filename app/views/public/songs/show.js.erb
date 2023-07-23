@@ -1,0 +1,3 @@
+<!--非同期通信の動作用-->
+$('#show_all_records').html("<%= escape_javascript(render 'public/records/all_records', records: @all_records) %>");
+$('#show_user_records').html("<%= escape_javascript(render 'public/records/user_records', records: @user_records) %>");

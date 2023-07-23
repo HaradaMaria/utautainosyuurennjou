@@ -1,50 +1,62 @@
 <div class="col-12">
 <!--サイト名-->
-  <div>
-    <h5>歌うたいの修練場</h5>
+  <div class="fs-3">
+    歌うたいの修練場
   </div>
-  
+
 <!--会員-->
   <% if user_signed_in? %>
     <!--曲一覧-->
-    <div class="row">
-      <%= link_to "曲一覧", songs_path, method: :get%>
-    </div>
-    
+    <%= link_to songs_path do %>
+      <div class="border-top text-center py-2">曲一覧</div>
+    <% end %>
+
     <!--マイページ-->
     <% unless current_user.guest_user? %>
-      <div class="row">
-        <%= link_to "マイぺージ",user_path(current_user), class: "" %>
+      <div >
+        <%= link_to user_path(current_user) do %>
+        <div class="border-top text-center py-2">マイぺージ</div>
+        <% end %>
       </div>
     <% end %>
-    
+
     <!--ログアウト-->
-    <div class="row">
-      <%= link_to "Log out", destroy_user_session_path, method: :delete%>
+    <div>
+      <%= link_to  destroy_user_session_path, method: :delete do %>
+      <div class="border-top text-center py-2">Log out</div>
+      <% end %>
     </div>
-    
+
   <!--管理者-->
   <% elsif admin_signed_in? %>
-    
+
     <!--記録一覧-->
-    <div class="row">
-      <%= link_to "記録一覧", admin_records_path, method: :get%>
+    <div>
+      <%= link_to  admin_records_path, method: :get do %>
+      <div class="border-top text-center py-2">記録一覧</div>
+      <% end %>
     </div>
-    
-    
+
+
     <!--曲一覧-->
-    <div class="row">
-      <%= link_to "曲一覧", admin_songs_path, method: :get%>
+    <div>
+      <%= link_to  admin_songs_path, method: :get do %>
+      <div class="border-top text-center py-2">曲一覧</div>
+      <% end %>
     </div>
-    
+
     <!--会員一覧-->
-    <div class="row">
-      <%= link_to "会員一覧",admin_users_path(current_user), class: "" %>
+    <div>
+      <%= link_to admin_users_path(current_user) do %>
+      <div class="border-top text-center py-2">会員一覧</div>
+      <% end %>
     </div>
-    
+
     <!--ログアウト-->
-    <div class="row">
-      <%= link_to "Log out", destroy_admin_session_path, method: :delete%>
+    <div>
+      <%= link_to destroy_admin_session_path, method: :delete do %>
+      <div class="border-top text-center py-2">Log out</div>
+      <% end %>
     </div>
   <% end %>
 </div>

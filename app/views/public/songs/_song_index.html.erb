@@ -1,15 +1,14 @@
-<% if @songs.exists?%>
+<% if songs.exists?%>
   <div>
-    <table class="table col-12 text-light">
+    <table class="col-12">
       <div>
-        <% if @ward.present?%>
-          「<%= @ward %>」
+        <% if ward.present?%>
+          「<%= ward %>」
           の検索結果
         <% end %>
-        <!--%= @bookmarks.songs.name %>-->
       </div>
       <div>
-        全<%= songs.count %>件
+        全<%= song_looks.count %>件
       </div>
       <thead>
         <tr>
@@ -24,6 +23,7 @@
         </tr>
       </thead>
       <tbody>
+        <% p "読んだ"%>
         <% songs.each do |song| %>
           <tr>
             <td>
@@ -36,7 +36,7 @@
             <td><%= song.composer %></td>
             <td><%= song.tie_up %></td>
             <% unless current_user.guest_user? %>
-            <td id="bookmark<%= song.id %>">
+            <td id="bookmark<%= song.id %>"$, class="fs-3">
               <%= render 'public/bookmarks/bookmark', song: song %>
             </td>
             <% end %>
@@ -44,6 +44,7 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate songs, remote: true %>
   </div>
 <% else %>
   <div class="">検索結果がありません</div>

@@ -1,32 +1,33 @@
-<h2>会員ログイン</h2>
+<h2 class="justify-content-center text-center">修練者ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="field justify-content-center text-center">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
 
-  <div class="field">
+  <div class="field justify-content-center text-center">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field justify-content-center text-center">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="actions justify-content-center text-center">
+    <%= f.submit "ログイン", class:"btn btn-submit" %>
   </div>
 <% end %>
 
-  <div>
-    会員登録がお済みでない方はこちら
+  <div class="justify-content-center text-center">
+    修練者登録がお済みでない方はこちら
   </div>
-<%= render "public/shared/links" %>
-
+  <div class="justify-content-center text-center">
+    <%= render "public/shared/links" %>
+  </div>
 

@@ -14,7 +14,7 @@
           <td><%= record.song.name %></td>
           <td>
             <%= link_to admin_song_record_path(@song,record) do%>
-            <%= record.created_at %>
+            <%= record.created_at.strftime("%y/%m/%d %H:%M") %>
             <% end %>
           </td>
           <td><%= number_with_precision(record.score, precision: 2) %></td>

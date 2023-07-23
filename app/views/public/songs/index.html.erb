@@ -1,26 +1,30 @@
 <!--メイン部分-->
 <%= flash[:notice] %>
-  <h1>曲一覧</h1>
-  
-  <% unless current_user.guest_user? %>
-    <%= link_to new_song_path, class: "btn btn-primary" do%>
-      <div>新曲登録</div>
-    <% end %>
-  <% end %>
-  
+  <h1 class="justify-content-center text-center">曲一覧</h1>
+
   <!--検索フォーム-->
   <%= form_with url: search_path(@songs), method: :get, local: false do|f| %>
-      <%= f.text_field :ward %>
-      <%= f.select :colmn, options_for_select([['曲名'], ['アーティスト名'], ['作詞者名'], ['作曲者名']]) %>
-      <%= f.check_box :bookmark, { multiple: false }, true, false %>
-      <%= f.label :bookmark, "ブックマーク済"%>
-      <div>
-        <%= f.submit "曲を検索", class: "btn btn-success"%>
+    <div class="field justify-content-center text-center">
+    <%= f.text_field :ward %>
+    <%= f.select :colmn, options_for_select([['曲名'], ['アーティスト名'], ['作詞者名'], ['作曲者名']]) %>
+    <%= f.check_box :bookmark, { multiple: false }, true, false %>
+    <%= f.label :bookmark, "ブックマーク済"%>
+    </div>
+    <div class="row justify-content-around">
+      <div class=" text-center">
+      <% unless current_user.guest_user? %>
+        <%= link_to new_song_path, class: "btn btn-transition " do%>
+          <div>新曲登録</div>
+        <% end %>
+      <% end %>
       </div>
+      <div class="text-center">
+        <%= f.submit "曲を検索", class: "btn btn-submit"%>
+      </div>
+    </div>
   <% end %>
+  
   
   <!--曲一覧-->
   <div id="search"></div>
-  
-  <!--ページネーション-->
-  
+
