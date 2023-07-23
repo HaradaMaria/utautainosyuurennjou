@@ -1,0 +1,23 @@
+  <div class="top-container">
+    <h1 class="row col-12 justify-content-center text-center">歌うたいの修練場</h1>
+    <div class="text-area row col-12 justify-content-center text-center fs-3">
+      ここは歌うたい達に秘かに伝わる修練場</br>
+      先人の残した知恵に学び</br>
+      己が歌を更に高めるため</br>
+      今日も誰かがどこかで歌う</br>
+      あなたは…
+    </div>
+  
+    <div class="btn-area row align-items-center">
+      <div class="col col-3 offset-2">
+      <%= link_to "見学する", guest_sign_in_path, class: "btn btn-submit sign_in", method: :post %>
+      </div>
+      <div class="col col-3 offset-2">
+      <%= link_to "修練する",new_user_session_path, class: "btn btn-transition sign_in" %>
+      </div>
+    </div>
+    <!--新規登録(予備)-->
+    <!--<div class="row">-->
+      <!--%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success sign_up col-2" %>-->
+    <!--</div>-->
+  </div>

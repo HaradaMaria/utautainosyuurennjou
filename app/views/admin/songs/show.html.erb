@@ -1,0 +1,13 @@
+  <!--メイン部分-->
+  <!--曲情報-->
+  <div class="row col-md-12 col-sm-12 col-xs-12">
+    <%= render 'song_data', song: @song%>
+  </div>
+  
+  <div>
+    <%= link_to edit_admin_song_path(@song), class: "btn btn-primary" do%>
+      <div>編集する</div>
+    <% end %>
+  </div>
+  
+  <!--記録-->

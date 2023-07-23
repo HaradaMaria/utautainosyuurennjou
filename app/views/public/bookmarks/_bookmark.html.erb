@@ -1,0 +1,9 @@
+<% if song.bookmarking_by?(current_user) %>
+  <%= link_to song_bookmarks_path(song), method: :delete, remote: true, class: "fs-3" do%>
+    ★
+  <% end %>
+<% else %>
+  <%= link_to song_bookmarks_path(song), method: :post, remote: true ,class: "fs-3" do%>
+    ☆
+  <% end %>
+<% end %>

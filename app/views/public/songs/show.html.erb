@@ -1,0 +1,42 @@
+  <!--メイン部分-->
+  <!--曲情報-->
+  <div>
+    <div class="row col-12 align-items-end">
+      <%= render 'song_data', song: @song %>
+    </div>
+
+    <div class="col col-2">
+      <% unless current_user.guest_user? %>
+        <div id="bookmark<%= @song.id %>", class="text-center">
+          <%= render 'public/bookmarks/bookmark', song: @song %>
+        </div>
+
+        <div>
+          <%= link_to new_song_record_path(@song), class: "btn btn-primary justify-content-center" do %>
+            <div>記録</div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!--全員の記録-->
+  <div class="row col-12 fs-3">みんなの記録</div>
+  <div class="row col-12" id="show_all_records">
+    <%= render 'public/records/all_records', records: @all_records%>
+  </div>
+
+  <!--ログインしている会員分の記録-->
+
+  <% unless current_user.guest_user? %>
+  <div class="row col-12 fs-3">あなたの記録</div>
+
+  <!--グラフ-->
+  <div class="row col-12 graph-area">
+    <%= render 'layouts/line_graph' %>
+  </div>
+  
+    <div class="row col-12" id="show_user_records">
+      <%= render 'public/records/user_records', records: @user_records%>
+    </div>
+  <% end %>

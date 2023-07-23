@@ -1,0 +1,150 @@
+@use '~bootstrap/scss/bootstrap';
+
+// 全体
+
+$background-color: #050B0D;
+$accents-color: #034266;
+$dark-color: #0F2127;
+$font-color: #58C2E6;
+
+
+
+$font-size-base: 18px;
+
+
+.fs-1{
+    font-size: $font-size-base*2.75;
+}
+
+.fs-2{
+    font-size: $font-size-base*2;
+}
+
+.fs-3{
+    font-size: $font-size-base*1.5;
+}
+
+.fs-4{
+    font-size: $font-size-base;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: $font-size-base;
+}
+
+body{
+    background-color: $background-color;
+    color: $font-color;
+}
+
+
+// 各パーツ
+
+// ボタン
+.btn-transition{
+    margin-top: 25px;
+    font-size: $font-size-base;
+    background-color: #234658;
+    color: #5cb6e4;
+}
+
+.btn-submit{
+    margin-top: 25px;
+    font-size: $font-size-base;
+    background-color: #055720;
+    color: #0DE354;
+}
+
+.btn-caution{
+    margin-top: 50px;
+    font-size: $font-size-base;
+    background-color: #7D0011;
+    color: #ff0022;
+}
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+
+// 入力フォーム
+.field{
+    input {
+        color: $font-color;
+        background-color: $dark-color;
+    }
+
+    select {
+        color: $font-color;
+        background-color: $dark-color;
+    }
+    }
+
+
+// Topページ
+.top-container{
+    height: 100vh;
+    // text-shadow: 1px 2px 3px 色;
+    background-image: url("top.jpg");
+    background-size: 100% 100%;
+    background-position: bottom center;
+
+    h1{
+        height: 10%;
+    }
+
+    .text-area{
+        height: 30%;
+    }
+
+    .btn-area{
+        height: 60%;
+    }
+
+
+}
+
+
+// サイドバー
+.sidebar {
+
+    background-color: $accents-color;
+    width: 100%;
+
+    .border-top {
+        
+        border-color: $dark-color !important;
+        border-width: 3px !important;
+    }
+
+}
+
+.sidebar_fixed {
+    height: 100vh;
+    position: sticky;
+    top: 10px;
+}
+
+
+// テーブル
+table{
+    font-size: $font-size-base;
+    th,td{
+        border-top: $font-color solid;
+        color: $font-color;
+    }
+
+}
+
+// ページネーション
+.pagination {
+  justify-content: center;
+}
+
+// グラフ
+.graph-area{
+    width: 100%;
+}

@@ -1,0 +1,19 @@
+<!--メイン部分-->
+  <h1>曲一覧</h1>
+  <!--%= link_to new_song_path, class: "btn btn-primary" do%>-->
+  <!--  <div>新曲登録</div>-->
+  <!--% end %>-->
+  <!--検索フォーム-->
+  <%= form_with url: search_path(@songs), method: :get, local: false do|f| %>
+      <%= f.text_field :ward %>
+      <%= f.select :colmn, options_for_select([['曲名'], ['アーティスト名'], ['作詞者名'], ['作曲者名']]) %>
+      <!--%= f.check_box :bookmark, { multiple: false }, ture, false %>-->
+      <%= f.label :bookmark, "ブックマーク済"%>
+      <div>
+        <%= f.submit "曲を検索", class: "btn btn-success"%>
+      </div>
+  <% end %>
+
+
+  <!--曲一覧-->
+  <%= render 'song_index', songs: @songs %>
