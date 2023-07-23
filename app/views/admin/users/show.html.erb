@@ -1,31 +1,36 @@
-  <h1>会員情報</h1>
-  <table class="table text-light text-center">
-    <thead>
-      <tr>
-        <th class="col-1">ID</th>
-        <th class="col-4">会員名</th>
-        <th class="col-4">email</th>
-        <th class="col-2">修練状況</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr>
-        <td><%= @user.id%></td>
-        <td><%= @user.name %></td>
-        <td><%= @user.email %></td>
-        <td><%= @user.is_training ? '修練中' : '退会済'%></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <div>
-    <%= link_to edit_admin_user_path(@user), class: "btn btn-primary" do%>
-      <div>編集する</div>
-    <% end %>
+  <h1>修練者情報</h1>
+  <div class="row">
+    <table class="col col-12 justify-content-center text-center">
+      <thead>
+        <tr>
+          <th class="col-1">ID</th>
+          <th class="col-4">修練者名</th>
+          <th class="col-4">email</th>
+          <th class="col-2">修練状況</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr>
+          <td><%= @user.id%></td>
+          <td><%= @user.name %></td>
+          <td><%= @user.email %></td>
+          <td><%= @user.is_training ? '修練中' : '退会済'%></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+  <div class="row justify-content-center ">
+    <div>
+      <%= link_to edit_admin_user_path(@user), class: "btn btn-transition" do%>
+        <div>編集する</div>
+      <% end %>
+    </div>
+  </div>
   <!--記録テーブル-->
-  <div>
-  <!--%= render 'layouts/records_table', records: @recordes%>-->
+  <div class="fs-3"><%= @user.name %>の記録</div>
+  <div class="row">
+    <div class="col-12" id="show_user_records">
+      <%= render 'admin/records/user_records', records: @user_records%>
+    </div>
   </div>

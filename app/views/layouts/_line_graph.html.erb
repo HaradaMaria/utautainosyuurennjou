@@ -5,9 +5,8 @@
     <script>
       $(window).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
         Chart.defaults.font.size = 16;
-        let ctx = document.getElementById("myLineChart");    //A.グラフを表示するという関数を定義(id)
-        //ctxとは "canvas context" の略で、canvas要素の描画コンテキストを指している
-        let myLineChart = new Chart(ctx, {     //B.グラフの内容を決める関数を定義している
+        let ctx = document.getElementById("myLineChart");
+        let myLineChart = new Chart(ctx, {
           type: 'line',
           data: {
             labels: [
@@ -21,7 +20,6 @@
                   <% user_graph_asc.each do |graph|%>
                     <%= graph.score %>,
                   <% end %>
-                  // 10,20,30,40,30,60,70,80,90,10,
                 ],
                 borderColor: "#5cb6e4",    //線の色
                 tension: 0.2,    //線の曲線度合い

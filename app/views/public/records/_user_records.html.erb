@@ -1,5 +1,5 @@
-  <div id="pagenate" class="col-12">
-    <table class="table text-light text-center">
+  <div class="col-12">
+    <table class="col-12 text-center">
       <thead>
         <th class="col-4">曲名</th>
         <th class="col-3">点数</th>
@@ -13,14 +13,13 @@
             <td><%= number_with_precision(record.score, precision: 2) %></td>
             <td><%= record.key %></td>
             <td>
-              <%= link_to song_record_path(record) do%>
+              <%= link_to song_record_path(record.song.id,record) do%>
               <%= record.created_at.strftime("%y/%m/%d %H:%M") %>
               <% end %>
               </td>
           </tr>
         <% end %>
       </tbody>
-
     </table>
     <%= paginate @user_records, :param_name => 'user_records', remote: true %>
   </div>

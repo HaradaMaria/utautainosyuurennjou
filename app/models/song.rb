@@ -28,7 +28,9 @@ class Song < ApplicationRecord
     elsif colmn == "作曲者名"
       songs = Song.where("composer LIKE?","%#{ward}%")
     end
-    songs = songs.bookmarked_by(user.id) if bookmark == "true"
+    if user != 'guest_user' && 'current_admin'
+      songs = songs.bookmarked_by(user.id) if bookmark == "true"
+    end
     return songs
   end
 end

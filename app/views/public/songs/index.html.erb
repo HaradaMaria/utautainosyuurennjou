@@ -1,5 +1,6 @@
 <!--メイン部分-->
-<%= flash[:notice] %>
+  <%= flash[:notice] %>
+  
   <h1 class="justify-content-center text-center">曲一覧</h1>
 
   <!--検索フォーム-->
@@ -7,17 +8,19 @@
     <div class="field justify-content-center text-center">
     <%= f.text_field :ward %>
     <%= f.select :colmn, options_for_select([['曲名'], ['アーティスト名'], ['作詞者名'], ['作曲者名']]) %>
-    <%= f.check_box :bookmark, { multiple: false }, true, false %>
-    <%= f.label :bookmark, "ブックマーク済"%>
+    <% unless current_user.guest_user? %>
+      <%= f.check_box :bookmark, { multiple: false }, true, false %>
+      <%= f.label :bookmark, "ブックマーク済"%>
+    <% end %>
     </div>
     <div class="row justify-content-around">
-      <div class=" text-center">
       <% unless current_user.guest_user? %>
-        <%= link_to new_song_path, class: "btn btn-transition " do%>
-          <div>新曲登録</div>
-        <% end %>
+        <div class="text-center">
+          <%= link_to new_song_path, class: "btn btn-transition " do%>
+            <div>新曲登録</div>
+          <% end %>
+        </div>
       <% end %>
-      </div>
       <div class="text-center">
         <%= f.submit "曲を検索", class: "btn btn-submit"%>
       </div>

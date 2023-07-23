@@ -32,7 +32,7 @@ class Public::SongsController < ApplicationController
     @ward = params[:ward]
     @bookmark = params[:bookmark]
     @song_looks = Song.looks(params[:colmn],params[:ward],current_user,params[:bookmark])
-    @songs = @song_looks.page(params[:page])
+    @songs = @song_looks.order(name: :ASC).page(params[:page])
   end
 
 

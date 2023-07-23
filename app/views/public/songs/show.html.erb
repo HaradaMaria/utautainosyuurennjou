@@ -1,18 +1,18 @@
   <!--メイン部分-->
   <!--曲情報-->
-  <div>
-    <div class="row col-12 align-items-end">
+  <div class="row align-items-end">
+    <div class="col col-10 justify-content-center">
       <%= render 'song_data', song: @song %>
     </div>
 
-    <div class="col col-2">
+    <div class="col col-2 justify-content-center">
       <% unless current_user.guest_user? %>
         <div id="bookmark<%= @song.id %>", class="text-center">
           <%= render 'public/bookmarks/bookmark', song: @song %>
         </div>
 
         <div>
-          <%= link_to new_song_record_path(@song), class: "btn btn-primary justify-content-center" do %>
+          <%= link_to new_song_record_path(@song), class: "btn btn-transition justify-content-center" do %>
             <div>記録</div>
           <% end %>
         </div>

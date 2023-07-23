@@ -3,7 +3,7 @@ class Admin::RecordsController < ApplicationController
   
   def index
     @song = Song.all
-    @all_records = Record.all.order(id: :DESC)
+    @all_records = Record.page(params[:all_records]).order(id: :DESC)
   end
 
   def show
@@ -20,7 +20,7 @@ class Admin::RecordsController < ApplicationController
     @record = Record.find(params[:id])
     @song = @record.song
     if @record.update(record_params)
-      flash[:notice] = "編集しました"
+      flash[:notice] = "記録を編集しました"
       redirect_to admin_song_record_path(@song,@record)
     else
       render :new
@@ -30,7 +30,7 @@ class Admin::RecordsController < ApplicationController
   def destroy
     record = Record.find(params[:id])
     record.destroy
-    flash[:notice] = "商品を削除しました"
+    flash[:notice] = "記録を削除しました"
     redirect_to admin_records_path
   end
   

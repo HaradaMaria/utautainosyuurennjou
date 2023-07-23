@@ -1,18 +1,20 @@
 <!--メイン部分-->
   <!--曲情報-->
-  <div class="row col-12">
-    <%= render 'public/songs/song_data', song: @song %>
+  <div class="row">
+    <div class="col col-12 justify-content-center">
+      <%= render 'public/songs/song_data', song: @song %>
+    </div>
   </div>
 
   <div class="row col-12 fs-2 ">記録詳細</div>
   <table class="col-12">
     <tr>
       <th class="col-3 text-center">点数</th>
-      <td class="col-9"><%= number_with_precision(@record.score, precision: 2) %></td>
+      <td class="col-9 text-center"><%= number_with_precision(@record.score, precision: 2) %></td>
     </tr>
     <tr>
       <th class="col-3 text-center">キー</th>
-      <td class="col-9"><%= @record.key %></td>
+      <td class="col-9 text-center"><%= @record.key %></td>
     </tr>
     <tr>
       <th class="col-3 text-center">共有する事</th>
