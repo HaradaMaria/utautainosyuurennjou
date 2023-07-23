@@ -7,7 +7,7 @@
         <th class="col-3">記録日時</th>
       </thead>
       <tbody>
-        <% records.each do |record| %>6
+        <% records.each do |record| %>
           <tr>
             <td><%= record.song.name %></td>
             <td><%= number_with_precision(record.score, precision: 2) %></td>

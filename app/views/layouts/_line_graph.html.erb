@@ -1,9 +1,11 @@
-  <div class="row col-12">
+  <div class="w-100">
   <!--graph-area">-->
-    <canvas id="myLineChart", class="col-12"></canvas>
+    <div class="w-100" style="position: relative; height: 50vw; width: 100%;">
+      <canvas id="myLineChart"></canvas>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      $(window).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
+      // $(window).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
         Chart.defaults.font.size = 16;
         let ctx = document.getElementById("myLineChart");
         let myLineChart = new Chart(ctx, {
@@ -35,7 +37,7 @@
               },
             },
             responsive: true,    //画面サイズ変更に伴ってグラフのサイズ変更するか否か
-            // maintainAspectRatio: true,    //グラフサイズの縦横比固定
+            maintainAspectRatio: false,    //グラフサイズの縦横比固定
             backgroundColor: "#050B0D",    //背景色
             scales: {    //軸に対する設定
               y:{    //y軸に対する設定
@@ -48,6 +50,6 @@
             },
           }
         });
-      });
+      // });
     </script>
   </div>

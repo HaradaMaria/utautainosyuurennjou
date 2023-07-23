@@ -32,10 +32,10 @@
   <div class="row col-12 fs-3">あなたの記録</div>
 
   <!--グラフ-->
-  <div class="row col-12 graph-area">
+  <div class="w-100">
     <%= render 'layouts/line_graph' %>
   </div>
-  
+
     <div class="row col-12" id="show_user_records">
       <%= render 'public/records/user_records', records: @user_records%>
     </div>

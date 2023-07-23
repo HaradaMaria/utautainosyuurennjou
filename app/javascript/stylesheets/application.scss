@@ -7,33 +7,38 @@ $accents-color: #034266;
 $dark-color: #0F2127;
 $font-color: #58C2E6;
 
-
-
 $font-size-base: 18px;
-
-
-.fs-1{
-    font-size: $font-size-base*2.75;
-}
-
-.fs-2{
-    font-size: $font-size-base*2;
-}
-
-.fs-3{
-    font-size: $font-size-base*1.5;
-}
-
-.fs-4{
-    font-size: $font-size-base;
-}
 
 
 * {
     margin: 0;
     padding: 0;
-    font-size: $font-size-base;
+    font-size: calc(10px + 1vw);
 }
+
+
+.fs-1{
+    // @include fz_vw(8.4375*2.75)
+    font-size: $font-size-base*2.75;
+}
+
+.fs-2{
+    // @include fz_vw(8.4375*2)
+    font-size: $font-size-base*2;
+}
+
+.fs-3{
+    // @include fz_vw(8.4375*1.5)
+    font-size: $font-size-base*1.5;
+}
+
+.fs-4{
+    // @include fz_vw(8.4375)
+    font-size: calc(10px + 1vw);
+}
+
+
+
 
 body{
     background-color: $background-color;
@@ -115,7 +120,7 @@ body{
     width: 100%;
 
     .border-top {
-        
+
         border-color: $dark-color !important;
         border-width: 3px !important;
     }
@@ -146,5 +151,6 @@ table{
 
 // グラフ
 .graph-area{
-    width: 100%;
+    width: auto;
 }
+

@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @users = User.page(params[:page])
+    @users = User.where.not(id: User.find_by(email: User::GUEST_USER_EMAIL).id).page(params[:page])
   end
 
   def show
