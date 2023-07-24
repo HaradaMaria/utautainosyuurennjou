@@ -1,27 +1,39 @@
 <!--メイン部分-->
+  <%= flash[:notice] %>
   <!--曲情報-->
-  <div class="row col-12">
-    <%= render 'public/songs/song_data', song: @song %>
+  <div class="row">
+    <div class="col col-12 justify-content-center">
+      <%= render 'public/songs/song_data', song: @song %>
+    </div>
   </div>
 
   <div class="row col-12 fs-2 ">記録詳細</div>
   <table class="col-12">
+
     <tr>
-      <th class="col-3 text-center">点数</th>
-      <td class="col-9"><%= number_with_precision(@record.score, precision: 2) %></td>
+      <th class="col col-3 text-center">点数</th>
+      <td class="col col-9 text-center"><%= number_with_precision(@record.score, precision: 2) %></td>
     </tr>
     <tr>
-      <th class="col-3 text-center">キー</th>
-      <td class="col-9"><%= @record.key %></td>
+      <th class="col col-3 text-center">キー</th>
+      <td class="col col-9 text-center"><%= @record.key %></td>
     </tr>
     <tr>
-      <th class="col-3 text-center">共有する事</th>
-      <td class="col-9"><%= @record.share %></td>
+      <th class="col col-3 text-center">共有する事</th>
+      <td class="col col-9"><%= @record.share %></td>
     </tr>
     <tr>
       <% if @record.user_id == current_user.id%>
-      <th class="col-3 text-center">共有しないメモ</th>
-      <td class="col-9"><%= @record.memo %></td>
+      <th class="col col-3 text-center">共有しないメモ</th>
+      <td class="col col-9"><%= @record.memo %></td>
       <% end %>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">記録者</th>
+      <td class="col-9 text-center"><%= @record.user.name %></td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">記録日時</th>
+      <td class="col-9 text-center"><%= @record.created_at.strftime("%y/%m/%d %H:%M") %></td>
     </tr>
   </table>

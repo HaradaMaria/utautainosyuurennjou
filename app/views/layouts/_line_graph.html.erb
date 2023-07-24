@@ -1,17 +1,18 @@
-  <div class="row col-12">
+  <div class="w-100">
   <!--graph-area">-->
-    <canvas id="myLineChart", class="col-12"></canvas>
+    <div class="w-100" style="position: relative; height: 50vw; width: 100%; padding-right: 45px;">
+      <canvas id="myLineChart"></canvas>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      $(window).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
+      // $(window).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
         Chart.defaults.font.size = 16;
-        let ctx = document.getElementById("myLineChart");    //A.グラフを表示するという関数を定義(id)
-        //ctxとは "canvas context" の略で、canvas要素の描画コンテキストを指している
-        let myLineChart = new Chart(ctx, {     //B.グラフの内容を決める関数を定義している
+        let ctx = document.getElementById("myLineChart");
+        let myLineChart = new Chart(ctx, {
           type: 'line',
           data: {
             labels: [
-              1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+              "25回前","24回前","23回前","22回前","21回前","20回前","19回前","18回前","17回前","16回前","15回前","14回前","13回前","12回前","11回前","10回前","9回前","8回前","7回前","6回前","5回前","4回前","3回前","2回前","前回",
             ],
             datasets: [
               {
@@ -21,7 +22,6 @@
                   <% user_graph_asc.each do |graph|%>
                     <%= graph.score %>,
                   <% end %>
-                  // 10,20,30,40,30,60,70,80,90,10,
                 ],
                 borderColor: "#5cb6e4",    //線の色
                 tension: 0.2,    //線の曲線度合い
@@ -37,7 +37,7 @@
               },
             },
             responsive: true,    //画面サイズ変更に伴ってグラフのサイズ変更するか否か
-            // maintainAspectRatio: true,    //グラフサイズの縦横比固定
+            maintainAspectRatio: false,    //グラフサイズの縦横比固定
             backgroundColor: "#050B0D",    //背景色
             scales: {    //軸に対する設定
               y:{    //y軸に対する設定
@@ -50,6 +50,6 @@
             },
           }
         });
-      });
+      // });
     </script>
   </div>

@@ -1,0 +1,2 @@
+<!--非同期通信の動作用-->
+$('#search').html("<%= escape_javascript(render partial: 'admin/songs/song_index',locals: {colmn: @colmn, ward: @ward, songs: @songs, song_looks: @song_looks}) %>");

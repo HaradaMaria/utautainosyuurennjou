@@ -1,18 +1,19 @@
   <!--メイン部分-->
+  <%= flash[:notice] %>
   <!--曲情報-->
-  <div>
-    <div class="row col-12 align-items-end">
+  <div class="row align-items-end">
+    <div class="col-10 justify-content-center">
       <%= render 'song_data', song: @song %>
     </div>
 
-    <div class="col col-2">
+    <div class="col-2 justify-content-center">
       <% unless current_user.guest_user? %>
         <div id="bookmark<%= @song.id %>", class="text-center">
           <%= render 'public/bookmarks/bookmark', song: @song %>
         </div>
 
         <div>
-          <%= link_to new_song_record_path(@song), class: "btn btn-primary justify-content-center" do %>
+          <%= link_to new_song_record_path(@song), class: "btn btn-transition justify-content-center" do %>
             <div>記録</div>
           <% end %>
         </div>
@@ -20,7 +21,7 @@
     </div>
   </div>
 
-  <!--全員の記録-->
+  <!--全員の記録一覧-->
   <div class="row col-12 fs-3">みんなの記録</div>
   <div class="row col-12" id="show_all_records">
     <%= render 'public/records/all_records', records: @all_records%>
@@ -29,13 +30,28 @@
   <!--ログインしている会員分の記録-->
 
   <% unless current_user.guest_user? %>
-  <div class="row col-12 fs-3">あなたの記録</div>
-
-  <!--グラフ-->
-  <div class="row col-12 graph-area">
-    <%= render 'layouts/line_graph' %>
-  </div>
-  
+    <div class="row col-12 fs-3">あなたの記録</div>
+    <!--統計-->
+    <div class="row justify-content-center my-4">
+      <table class="col-9 text-center">
+        <thead>
+          <th class="col-3">歌った回数</th>
+          <th class="col-3">最高点</th>
+          <th class="col-3">平均点</th>
+        </thead>
+        <tbody>
+          <td><%= @user_records.count %></td>
+          <td><%= @user_records_max %></td>
+          <td><%= number_with_precision(@user_records_average, precision: 2) %></td>
+        </tbody>
+      </table>
+    </div>
+    <!--グラフ-->
+    <div class="w-100">
+      <%= render 'layouts/line_graph' %>
+    </div>
+    
+    <!--記録一覧-->
     <div class="row col-12" id="show_user_records">
       <%= render 'public/records/user_records', records: @user_records%>
     </div>

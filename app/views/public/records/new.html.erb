@@ -1,17 +1,21 @@
 <!--メイン部分-->
+
   <!--曲情報-->
   <div class="row col-12">
     <%= render 'public/songs/song_data', song: @song %>
   </div>
-  
+
   <!--記録フォーム-->
   <div class="row col-12 justify-content-center text-center fs-3">今回の記録</div>
+
+  <%= render 'layouts/error', obj: @record %>
+
   <%= form_with model: [@song,@record], url: song_records_path do |f| %>
 
     <%= f.hidden_field :song_id => @song.id %>
     <div class="field justify-content-center text-center">
       <%= f.label :score, "点数"%><br />
-      <%= f.number_field :score, step: "0.01", autofocus: true, autocomplete: "score" %>
+      <%= f.number_field :score, step: "0.01", in: 0.00..100.00, autofocus: true, autocomplete: "score" %>
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :key, "キー"%><br />
@@ -19,11 +23,11 @@
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :share, "共有する事"%><br />
-      <%= f.text_field :share, autofocus: true, autocomplete: "share" %>
+      <%= f.text_area :share, autofocus: true, autocomplete: "share", size: "25x4" %>
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :memo, "共有されないメモ"%><br />
-      <%= f.text_field :memo, autofocus: true, autocomplete: "memo" %>
+      <%= f.text_area :memo, autofocus: true, autocomplete: "memo", size: "25x4" %>
     </div>
 
     <div class="action justify-content-center text-center">

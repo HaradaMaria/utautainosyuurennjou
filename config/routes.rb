@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   namespace :admin do
     
     resources :records, only: [:index]
+    
+    get "search" => "songs#search"
     resources :songs, only: [:index,:show,:edit,:update] do
       resources :records, only: [:show,:edit,:update,:destroy]
     end

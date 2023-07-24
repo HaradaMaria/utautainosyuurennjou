@@ -1,4 +1,5 @@
-<h1>記録一覧</h1>
-  <div>
-    <%= render 'all_records', records: @all_records%>
+  <%= flash[:notice] %>
+  <h1 class="">記録一覧</h1>
+  <div class="col-12" id="show_all_records">
+    <%= render 'admin/records/all_records', records: @all_records%>
   </div>

@@ -4,9 +4,11 @@ class Song < ApplicationRecord
   has_many :bookmarks
 
   validates :name, presence: true
+  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :artist, presence: true, length: { maximum: 50 }
   validates :songwriter, presence: true, length: { maximum: 50 }
   validates :composer, presence: true, length: { maximum: 50 }
+  validates :tie_up, length: { maximum: 50 }
 
   def bookmarking_by?(user)
     bookmarks.exists?(user_id: user.id)
@@ -28,7 +30,9 @@ class Song < ApplicationRecord
     elsif colmn == "作曲者名"
       songs = Song.where("composer LIKE?","%#{ward}%")
     end
-    songs = songs.bookmarked_by(user.id) if bookmark == "true"
+    if user != 'guest_user' && 'current_admin'
+      songs = songs.bookmarked_by(user.id) if bookmark == "true"
+    end
     return songs
   end
 end
