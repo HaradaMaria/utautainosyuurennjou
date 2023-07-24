@@ -14,7 +14,7 @@
     <!--マイページ-->
     <% unless current_user.guest_user? %>
       <div >
-        <%= link_to user_path(current_user) do %>
+        <%= link_to user_path(current_user), data: {"turbolinks" => false} do %>
         <div class="border-top text-center py-2">マイぺージ</div>
         <% end %>
       </div>

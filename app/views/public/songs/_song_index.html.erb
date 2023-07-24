@@ -26,7 +26,7 @@
           <% songs.each do |song| %>
             <tr>
               <td>
-                <%= link_to song_path(song) do%>
+                <%= link_to song_path(song), data: {"turbolinks" => false} do%>
                   <%= song.name %>
                 <% end %>
               </td>

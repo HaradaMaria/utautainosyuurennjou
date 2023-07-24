@@ -24,6 +24,18 @@
   <div class="row col-12 fs-2">記録詳細</div>
   <table class="col-12">
     <tr>
+      <th class="col-3 text-center">記録者</th>
+      <td class="col-9 text-center">
+        <%= link_to admin_user_path(@record.user_id) do %>
+            <%= @record.user.name %>
+          <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">記録日時</th>
+      <td class="col-9 text-center"><%= @record.created_at.strftime("%y/%m/%d %H:%M") %></td>
+    </tr>
+    <tr>
       <th class="col-3 text-center">点数</th>
       <td class="col-9 text-center"><%= number_with_precision(@record.score, precision: 2) %></td>
     </tr>

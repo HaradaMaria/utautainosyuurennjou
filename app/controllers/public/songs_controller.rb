@@ -25,6 +25,8 @@ class Public::SongsController < ApplicationController
     @all_records = @song.records.page(params[:all_records]).order(id: :DESC)
     @user_records = @song.records.where(user_id:@user).page(params[:user_records]).order(id: :DESC)
     @user_graph = @song.records.where(user_id:@user).order(id: :DESC).limit(25)
+    @user_records_max = @user_records.maximum(:score)
+    @user_records_average = @user_records.average(:score)
   end
 
   def search
@@ -32,13 +34,13 @@ class Public::SongsController < ApplicationController
     @ward = params[:ward]
     @bookmark = params[:bookmark]
     @song_looks = Song.looks(params[:colmn],params[:ward],current_user,params[:bookmark])
-    @songs = @song_looks.order(name: :ASC).page(params[:page])
+    @songs = @song_looks.order(name_kana: :ASC).page(params[:page])
   end
 
 
   private
 
   def song_params
-    params.require(:song).permit(:name,:artist,:songwriter,:composer,:tie_up)
+    params.require(:song).permit(:name,:name_kana,:artist,:songwriter,:composer,:tie_up)
   end
 end

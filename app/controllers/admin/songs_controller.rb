@@ -26,12 +26,12 @@ class Admin::SongsController < ApplicationController
     @colmn = params[:colmn]
     @ward = params[:ward]
     @song_looks = Song.looks(params[:colmn],params[:ward],current_admin,params[:bookmark])
-    @songs = @song_looks.order(name: :ASC).page(params[:page])
+    @songs = @song_looks.order(name_kana: :ASC).page(params[:page])
   end
   
   private
   
   def song_params
-    params.require(:song).permit(:name,:artist,:songwriter,:composer,:tie_up)
+    params.require(:song).permit(:name,:name_kana,:artist,:songwriter,:composer,:tie_up)
   end
 end

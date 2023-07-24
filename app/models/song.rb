@@ -4,6 +4,7 @@ class Song < ApplicationRecord
   has_many :bookmarks
 
   validates :name, presence: true
+  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :artist, presence: true, length: { maximum: 50 }
   validates :songwriter, presence: true, length: { maximum: 50 }
   validates :composer, presence: true, length: { maximum: 50 }
