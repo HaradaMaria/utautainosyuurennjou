@@ -4,10 +4,14 @@
     <%= render 'admin/songs/song_data', song: @song %>
   </div>
   
-  <!--記録フォーム-->
-  <div class="justify-content-center text-center fs-2">記録編集</h3>
-    <%= form_with model: @record, url: admin_song_record_path do |f| %>
+  
 
+  <!--記録フォーム-->
+  <div class="justify-content-center text-center fs-2">記録編集</div>
+
+  <%= render 'layouts/error', obj: @record %>
+
+  <%= form_with model: @record, url: admin_song_record_path do |f| %>
     <%= f.hidden_field :song_id => @song.id %>
     <div class="field justify-content-center text-center">
       <%= f.label :score, "点数" %><br />
@@ -25,7 +29,7 @@
       <%= f.label :memo, "共有されないメモ"%><br />
       <%= f.text_area :memo, autofocus: true, autocomplete: "memo", size: "25x4" %>
     </div>
-
+  
     <div class="action justify-content-center text-center ">
       <%= f.submit '記録する', class:"btn btn-submit"%>
     </div>

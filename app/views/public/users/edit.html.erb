@@ -1,5 +1,8 @@
 <!--メイン部分-->
 <h1 class="justify-content-center text-center">修練者情報編集</h1>
+
+<%= render 'layouts/error', obj: @user %>
+
 <%= form_with model: @user, url: user_path do |f| %>
   <div class="field justify-content-center text-center">
     <%= f.label :name, "ニックネーム"%><br />

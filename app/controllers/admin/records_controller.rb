@@ -23,7 +23,7 @@ class Admin::RecordsController < ApplicationController
       flash[:notice] = "記録を編集しました"
       redirect_to admin_song_record_path(@song,@record)
     else
-      render :new
+      render :edit
     end
   end
   

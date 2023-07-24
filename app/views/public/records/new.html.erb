@@ -7,6 +7,9 @@
 
   <!--記録フォーム-->
   <div class="row col-12 justify-content-center text-center fs-3">今回の記録</div>
+
+  <%= render 'layouts/error', obj: @record %>
+
   <%= form_with model: [@song,@record], url: song_records_path do |f| %>
 
     <%= f.hidden_field :song_id => @song.id %>
