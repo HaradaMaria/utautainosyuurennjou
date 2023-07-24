@@ -7,6 +7,7 @@ class Song < ApplicationRecord
   validates :artist, presence: true, length: { maximum: 50 }
   validates :songwriter, presence: true, length: { maximum: 50 }
   validates :composer, presence: true, length: { maximum: 50 }
+  validates :tie_up, length: { maximum: 50 }
 
   def bookmarking_by?(user)
     bookmarks.exists?(user_id: user.id)

@@ -1,5 +1,6 @@
 <!--メイン部分-->
   <!--曲情報-->
+  <%= flash[:notice] %>
   <div class="row align-items-end">
     <div class="col col-10 justify-content-center">
       <%= render 'admin/songs/song_data', song: @song %>

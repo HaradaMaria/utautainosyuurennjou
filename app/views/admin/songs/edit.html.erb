@@ -3,23 +3,23 @@
   <%= form_with model: @song, url: admin_song_path do |f| %>
     <div class="field justify-content-center text-center">
       <%= f.label :name, "曲名"%><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "25" %>
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :artist, "アーティスト名"%><br />
-      <%= f.text_field :artist, autofocus: true, autocomplete: "artist" %>
+      <%= f.text_field :artist, autofocus: true, autocomplete: "artist", size: "25" %>
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :songwriter, "作詞者名"%><br />
-      <%= f.text_field :songwriter, autofocus: true, autocomplete: "songwriter" %>
+      <%= f.text_field :songwriter, autofocus: true, autocomplete: "songwriter", size: "25" %>
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :composer, "作曲者名"%><br />
-      <%= f.text_field :composer, autofocus: true, autocomplete: "composer" %>
+      <%= f.text_field :composer, autofocus: true, autocomplete: "composer", size: "25" %>
     </div>
     <div class="field justify-content-center text-center">
       <%= f.label :tie_up, "タイアップ情報"%><br />
-      <%= f.text_field :tie_up, autofocus: true, autocomplete: "tie_up" %>
+      <%= f.text_field :tie_up, autofocus: true, autocomplete: "tie_up", size: "25" %>
     </div>
     
     <div class="action justify-content-center text-center">

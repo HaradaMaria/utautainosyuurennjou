@@ -7,34 +7,34 @@ $accents-color: #034266;
 $dark-color: #0F2127;
 $font-color: #58C2E6;
 
-$font-size-base: 18px;
+$font-size-base: calc(7px + 1vw);
 
 
 * {
     margin: 0;
     padding: 0;
-    font-size: calc(10px + 1vw);
+    font-size: $font-size-base;
 }
 
 
 .fs-1{
     // @include fz_vw(8.4375*2.75)
-    font-size: $font-size-base*2.75;
+    font-size: calc(24px + 2.75vw);
 }
 
 .fs-2{
     // @include fz_vw(8.4375*2)
-    font-size: $font-size-base*2;
+    font-size: calc(17px + 2vw);
 }
 
 .fs-3{
     // @include fz_vw(8.4375*1.5)
-    font-size: $font-size-base*1.5;
+    font-size: calc(12px + 1.5vw);
 }
 
 .fs-4{
     // @include fz_vw(8.4375)
-    font-size: calc(10px + 1vw);
+    font-size: calc(7px + 1vw);
 }
 
 
@@ -77,7 +77,7 @@ body{
 
 // 入力フォーム
 .field{
-    input {
+    input,textarea{
         color: $font-color;
         background-color: $dark-color;
     }
@@ -115,12 +115,10 @@ body{
 
 // サイドバー
 .sidebar {
-
     background-color: $accents-color;
     width: 100%;
 
     .border-top {
-
         border-color: $dark-color !important;
         border-width: 3px !important;
     }
@@ -138,6 +136,7 @@ body{
 table{
     font-size: $font-size-base;
     th,td{
+        word-break: break-all;
         border-top: $font-color solid;
         color: $font-color;
     }

@@ -1,4 +1,5 @@
 <!--メイン部分-->
+  <%= flash[:notice] %>
   <h1 class="row">修練者情報</h1>
   <div class="row">
     <div class="col-10">
@@ -28,7 +29,7 @@
   <!--記録テーブル-->
   <div class="fs-3">あなたの記録</div>
   <!--グラフ-->
-  <div class="row col-12 graph-area">
+  <div class="w‐100 graph-area">
     <%= render 'layouts/line_graph' %>
   </div>
   
