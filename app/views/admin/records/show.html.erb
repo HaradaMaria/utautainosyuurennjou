@@ -14,7 +14,7 @@
       </div>
       
       <div>
-        <%= link_to admin_song_record_path(@record), method: :delete, class: "btn btn-caution justify-content-center" do%>
+        <%= link_to admin_song_record_path(@record), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-caution justify-content-center" do%>
           <div>削除</div>
         <% end %>
       </div>

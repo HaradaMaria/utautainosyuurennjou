@@ -5,51 +5,49 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      // $(window).on('turbolinks:load', function() {    //turbolinkの設定変更(documentはだめだった、windowでいけた)
-        Chart.defaults.font.size = 16;
-        let ctx = document.getElementById("myLineChart");
-        let myLineChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: [
-              "25回前","24回前","23回前","22回前","21回前","20回前","19回前","18回前","17回前","16回前","15回前","14回前","13回前","12回前","11回前","10回前","9回前","8回前","7回前","6回前","5回前","4回前","3回前","2回前","前回",
-            ],
-            datasets: [
-              {
-                label: '点数',    //系列名
-                data: [    //x軸データ
-                  <% user_graph_asc = @user_graph.sort {|a,b| a[:id] <=>b[:id]} %>
-                  <% user_graph_asc.each do |graph|%>
-                    <%= graph.score %>,
-                  <% end %>
-                ],
-                borderColor: "#5cb6e4",    //線の色
-                tension: 0.2,    //線の曲線度合い
-              },
-            ]
+      Chart.defaults.font.size = 16;
+      let ctx = document.getElementById("myLineChart");
+      let myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: [
+            "前回","2回前","3回前","4回前","5回前","6回前","7回前","8回前","9回前","10回前","11回前","12回前","13回前","14回前","15回前","16回前","17回前","18回前","19回前","20回前","21回前","22回前","23回前","24回前","25回前",
+          ],
+          datasets: [
+            {
+              label: '点数',    //系列名
+              data: [    //x軸データ
+                <% @user_graph.each do |graph|%>
+                  <%= graph.score %>,
+                <% end %>
+              ],
+              borderColor: "#5cb6e4",    //線の色
+              tension: 0.2,    //線の曲線度合い
+            },
+          ]
+        },
+        options: {
+          plugins: {
+            title: {    //グラフタイトル
+              display: true,    //表示するか否か
+              font: {size: '18'},
+              text: '直近25回の点数',    //文面
+            },
           },
-          options: {
-            plugins: {
-              title: {    //グラフタイトル
-                display: true,    //表示するか否か
-                font: {size: '18'},
-                text: '直近25回の点数',    //文面
-              },
+          responsive: true,    //画面サイズ変更に伴ってグラフのサイズ変更するか否か
+          maintainAspectRatio: false,    //グラフサイズの縦横比固定
+          backgroundColor: "#050B0D",    //背景色
+          scales: {    //軸に対する設定
+            y:{    //y軸に対する設定
+              min: 0,    //y軸の最小値
+              max: 100.00,    //y軸の最大値
             },
-            responsive: true,    //画面サイズ変更に伴ってグラフのサイズ変更するか否か
-            maintainAspectRatio: false,    //グラフサイズの縦横比固定
-            backgroundColor: "#050B0D",    //背景色
-            scales: {    //軸に対する設定
-              y:{    //y軸に対する設定
-                min: 0,    //y軸の最小値
-                max: 100.00,    //y軸の最大値
-              },
-              x:{    //x軸に対する設定
-                display: false,
-              },
+            x:{    //x軸に対する設定
+              reverse: true,
+              display: false,
             },
-          }
-        });
-      // });
+          },
+        }
+      });
     </script>
   </div>
