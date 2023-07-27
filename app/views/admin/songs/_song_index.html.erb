@@ -1,31 +1,42 @@
-<% if @songs.exists?%>
-  <table class="table col-12">
-    <% @ward %>の検索結果 <%= songs.count %>件
-    <thead>
-      <tr>
-        <th class="col-2">曲名</th>
-        <th class="col-2">アーティスト</th>
-        <th class="col-2">作詞者</th>
-        <th class="col-2">作曲者</th>
-        <th class="col-3">タイアップ情報</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% songs.each do |song| %>
-        <tr>
-          <td>
-            <%= link_to admin_song_path(song) do%>
-              <%= song.name %>
-            <% end %>
-          </td>
-          <td><%= song.artist %></td>
-          <td><%= song.songwriter %></td>
-          <td><%= song.composer %></td>
-          <td><%= song.tie_up %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-<div class="">検索結果がありません</div>
-<% end %>
+  <% if songs.exists?%>
+    <div class="col-12">
+      <table class="justify-content-center text-center">
+        <div>
+          <% if ward.present?%>
+            「<%= @ward %>」
+            の検索結果
+          <% end %>
+        </div>
+        <div>
+          全<%= song_looks.count %>件
+        </div>
+        <thead>
+          <tr>
+            <th class="col-2">曲名</th>
+            <th class="col-2">アーティスト</th>
+            <th class="col-2">作詞者</th>
+            <th class="col-2">作曲者</th>
+            <th class="col-3">タイアップ情報</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% songs.each do |song| %>
+            <tr>
+              <td>
+                <%= link_to admin_song_path(song) do%>
+                  <%= song.name %>
+                <% end %>
+              </td>
+              <td><%= song.artist %></td>
+              <td><%= song.songwriter %></td>
+              <td><%= song.composer %></td>
+              <td><%= song.tie_up %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate songs, remote: true %>
+    </div>
+  <% else %>
+    <div class="text-center">検索結果がありません</div>
+  <% end %>

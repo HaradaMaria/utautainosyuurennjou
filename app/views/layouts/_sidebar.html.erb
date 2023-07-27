@@ -1,7 +1,7 @@
 <div class="col-12">
 <!--サイト名-->
-  <div class="fs-3">
-    歌うたいの修練場
+  <div class="text-center fs-3">
+    歌うたいの</br>修練場
   </div>
 
 <!--会員-->
@@ -14,7 +14,7 @@
     <!--マイページ-->
     <% unless current_user.guest_user? %>
       <div >
-        <%= link_to user_path(current_user) do %>
+        <%= link_to user_path(current_user), data: {"turbolinks" => false} do %>
         <div class="border-top text-center py-2">マイぺージ</div>
         <% end %>
       </div>
@@ -48,7 +48,7 @@
     <!--会員一覧-->
     <div>
       <%= link_to admin_users_path(current_user) do %>
-      <div class="border-top text-center py-2">会員一覧</div>
+      <div class="border-top text-center py-2">修練者一覧</div>
       <% end %>
     </div>
 

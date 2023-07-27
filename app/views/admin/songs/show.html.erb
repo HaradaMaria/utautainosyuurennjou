@@ -1,13 +1,15 @@
   <!--メイン部分-->
+  <%= flash[:notice] %>
   <!--曲情報-->
-  <div class="row col-md-12 col-sm-12 col-xs-12">
-    <%= render 'song_data', song: @song%>
+  <div class="row align-items-end">
+    <div class="col col-10 justify-content-center">
+      <%= render 'song_data', song: @song%>
+    </div>
+    
+    <div class="col col-2 justify-content-center">
+      <%= link_to edit_admin_song_path(@song), class: "btn btn-transition" do%>
+        <div>編集</div>
+      <% end %>
+    </div>
   </div>
-  
-  <div>
-    <%= link_to edit_admin_song_path(@song), class: "btn btn-primary" do%>
-      <div>編集する</div>
-    <% end %>
-  </div>
-  
   <!--記録-->

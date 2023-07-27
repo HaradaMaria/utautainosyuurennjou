@@ -2,7 +2,6 @@ class Admin::SongsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @songs = Song.all 
   end
 
   def show
@@ -23,10 +22,16 @@ class Admin::SongsController < ApplicationController
     end
   end
   
+  def search
+    @colmn = params[:colmn]
+    @ward = params[:ward]
+    @song_looks = Song.looks(params[:colmn],params[:ward],current_admin,params[:bookmark])
+    @songs = @song_looks.order(name_kana: :ASC).page(params[:page])
+  end
   
   private
   
   def song_params
-    params.require(:song).permit(:name,:artist,:songwriter,:composer,:tie_up)
+    params.require(:song).permit(:name,:name_kana,:artist,:songwriter,:composer,:tie_up)
   end
 end

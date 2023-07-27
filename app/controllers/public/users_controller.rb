@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:show, :edit, :update]
+  before_action :ensure_guest_user, only: [:show,:edit,:update,:check,:withdraw]
   def show
     @user = current_user
     @user_records = @user.records.page(params[:user_records]).order(id: :DESC)
@@ -13,7 +14,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "会員情報を更新しました"
+      flash[:notice] = "修練者情報を更新しました"
       redirect_to user_path(@user)
     else
       render :edit
@@ -21,7 +22,7 @@ class Public::UsersController < ApplicationController
   end
 
   def check
-
+    
   end
 
   def withdraw
@@ -38,7 +39,7 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to new_user_sessions_path
+      redirect_to new_user_session_path
     end
   end
 

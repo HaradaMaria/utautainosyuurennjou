@@ -1,29 +1,55 @@
 <!--メイン部分-->
   <!--曲情報-->
-  <div class="row col-md-12 col-sm-12 col-xs-12">
-    <%= render 'admin/songs/song_data', song: @song %>
-  </div>
-
-  <h1>記録詳細</h1>
-    <table>
-      <div>点数</div>
-      <div><%= number_with_precision(@record.score, precision: 2) %></div>
-      <div>キー</div>
-      <div><%= @record.key %></div>
-      <div>共有する事</div>
-      <div><%= @record.share %></div>
-      <div>共有しないメモ</div>
-      <div><%= @record.memo %></div>
-</table>
-
-  <div>
-    <%= link_to edit_admin_song_record_path(@record), class: "btn btn-primary" do%>
-      <div>編集する</div>
-    <% end %>
+  <%= flash[:notice] %>
+  <div class="row align-items-end">
+    <div class="col col-10 justify-content-center">
+      <%= render 'admin/songs/song_data', song: @song %>
+    </div>
+    
+    <div class="col col-2 justify-content-center">
+      <div>
+        <%= link_to edit_admin_song_record_path(@record), class: "btn btn-transition justify-content-center" do%>
+          <div>編集</div>
+        <% end %>
+      </div>
+      
+      <div>
+        <%= link_to admin_song_record_path(@record), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-caution justify-content-center" do%>
+          <div>削除</div>
+        <% end %>
+      </div>
+    </div>
   </div>
   
-    <div>
-    <%= link_to admin_song_record_path(@record), method: :delete, class: "btn btn-danger" do%>
-      <div>削除する</div>
-    <% end %>
-  </div>
+  <div class="row col-12 fs-2">記録詳細</div>
+  <table class="col-12">
+    <tr>
+      <th class="col-3 text-center">記録者</th>
+      <td class="col-9 text-center">
+        <%= link_to admin_user_path(@record.user_id) do %>
+            <%= @record.user.name %>
+          <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">記録日時</th>
+      <td class="col-9 text-center"><%= @record.created_at.strftime("%y/%m/%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">点数</th>
+      <td class="col-9 text-center"><%= number_with_precision(@record.score, precision: 2) %></td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">キー</th>
+      <td class="col-9 text-center"><%= @record.key %></td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">共有する事</th>
+      <td class="col-9"><%= @record.share %></td>
+    </tr>
+    <tr>
+      <th class="col-3 text-center">共有しないメモ</th>
+      <td class="col-9"><%= @record.memo %></td>
+    </tr>
+  </table>
+

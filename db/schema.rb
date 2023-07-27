@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_11_133531) do
+ActiveRecord::Schema.define(version: 2023_07_24_100537) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2023_07_11_133531) do
     t.string "tie_up"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name_kana"
   end
 
   create_table "users", force: :cascade do |t|
