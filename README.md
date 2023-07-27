@@ -34,7 +34,7 @@
 
 
 ## ワイヤーフレーム・ER図
-![image](images/wireframe_er.png)
+![image](wireframe_er.png)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
